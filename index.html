@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HealthCare Plus</title>
+
+<style>
+
+/* ---------- General ---------- */
+body{
+    margin:0;
+    font-family: Arial, sans-serif;
+}
+
+/* Navbar */
+header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px 40px;
+    background:#0a9396;
+    color:white;
+}
+
+nav a{
+    color:white;
+    margin:0 10px;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+/* Home */
+.home{
+    text-align:center;
+    padding:80px;
+    background:#e9f5f5;
+}
+
+button{
+    padding:10px 20px;
+    background:#0a9396;
+    border:none;
+    color:white;
+    cursor:pointer;
+}
+
+/* Sections */
+section{
+    padding:50px;
+    text-align:center;
+}
+
+/* Cards */
+.card{
+    display:inline-block;
+    padding:20px;
+    margin:10px;
+    background:#f1f1f1;
+    border-radius:8px;
+}
+
+/* Doctors */
+.doctor{
+    display:inline-block;
+    margin:15px;
+    padding:20px;
+    background:#f8f8f8;
+    border-radius:8px;
+}
+
+/* Form */
+input{
+    display:block;
+    margin:10px auto;
+    padding:10px;
+    width:250px;
+}
+
+#error{
+    color:red;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- Navbar -->
+<header>
+<h2>HealthCare Plus</h2>
+<nav>
+<a href="#home">Home</a>
+<a href="#about">About</a>
+<a href="#services">Services</a>
+<a href="#doctors">Doctors</a>
+<a href="#contact">Contact</a>
+</nav>
+</header>
+
+<!-- Home -->
+<section id="home" class="home">
+<h1>Your Health, Our Priority</h1>
+<p>Providing quality healthcare services.</p>
+<button onclick="showMessage()">Book Appointment</button>
+</section>
+
+<!-- About -->
+<section id="about">
+<h2>About Us</h2>
+<p>
+We provide advanced medical facilities with experienced doctors
+and modern healthcare solutions.
+</p>
+</section>
+
+<!-- Services -->
+<section id="services">
+<h2>Our Services</h2>
+
+<div class="card">General Checkup</div>
+<div class="card">Emergency Care</div>
+<div class="card">Laboratory Tests</div>
+<div class="card">Online Consultation</div>
+
+</section>
+
+<!-- Doctors -->
+<section id="doctors">
+<h2>Our Doctors</h2>
+
+<div class="doctor">
+<h3>Dr. Sharma</h3>
+<p>Cardiologist</p>
+</div>
+
+<div class="doctor">
+<h3>Dr. Mehta</h3>
+<p>Neurologist</p>
+</div>
+
+</section>
+
+<!-- Contact -->
+<section id="contact">
+<h2>Book Appointment</h2>
+
+<form onsubmit="return validateForm()">
+<input type="text" id="name" placeholder="Your Name">
+<input type="email" id="email" placeholder="Email">
+<input type="date" id="date">
+<button type="submit">Submit</button>
+</form>
+
+<p id="error"></p>
+
+</section>
+
+<!-- JavaScript -->
+<script>
+
+function showMessage(){
+    alert("Our assistant will help you book an appointment.");
+}
+
+function validateForm(){
+
+let name=document.getElementById("name").value;
+let email=document.getElementById("email").value;
+let date=document.getElementById("date").value;
+
+if(name=="" || email=="" || date==""){
+document.getElementById("error").innerHTML=
+"Please fill all fields";
+return false;
+}
+
+alert("Appointment Submitted Successfully!");
+return true;
+}
+
+</script>
+
+<!-- ============================= -->
+<!-- ✅ IBM Watson Chatbot -->
+<!-- ============================= -->
+
+<script>
+  window.watsonAssistantChatOptions = {
+    integrationID: "2671a136-57fa-4149-86bf-d24798a9b80f", // The ID of this integration.
+    region: "au-syd", // The region your integration is hosted in.
+    serviceInstanceID: "b408a5ab-76be-4ff2-bdeb-b9f5cd5a1398", // The ID of your service instance.
+    onLoad: async (instance) => { await instance.render(); }
+  };
+  setTimeout(function(){
+    const t=document.createElement('script');
+    t.src="https://web-chat.global.assistant.watson.appdomain.cloud/versions/" + (window.watsonAssistantChatOptions.clientVersion || 'latest') + "/WatsonAssistantChatEntry.js";
+    document.head.appendChild(t);
+  });
+</script>
+
+</body>
+</html>
